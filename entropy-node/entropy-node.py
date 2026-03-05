@@ -9,9 +9,7 @@ def entropy_node(y):
         return 0
 
     y = np.array(y, dtype = float)
-
-    unique_vals, counts = np.unique(y,return_counts=True)
-
-    probabilities = counts / counts.sum()
-
-    return -np.sum (probabilities * np.log2(probabilities) )
+    classes, counts = np.unique(y,return_counts=True)
+    p = counts / counts.sum()
+    p = p[p>0]
+    return -np.sum (p * np.log2(p) )
